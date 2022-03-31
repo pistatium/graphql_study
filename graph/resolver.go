@@ -6,4 +6,5 @@ import (
 
 type Resolver struct {
 	TodoRepo repo.TodoRepository
+	UserRepo repo.UserRepo
 }

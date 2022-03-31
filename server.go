@@ -21,6 +21,7 @@ func main() {
 	}
 	resolver := &graph.Resolver{
 		TodoRepo: repo.NewDummyTodoRepo(),
+		UserRepo: repo.NewDummyUserRepo(),
 	}
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: resolver}))
 
