@@ -8,8 +8,8 @@ import (
 )
 
 type TodoRepository interface {
-	getTodoList(ctx context.Context, cursor string) ([]*model.Todo, error)
-	getTodo(ctx context.Context, id string) (*model.Todo, error)
+	GetTodoList(ctx context.Context, cursor string) ([]*model.Todo, error)
+	GetTodo(ctx context.Context, id string) (*model.Todo, error)
 }
 
 const pageSize = 3
@@ -18,7 +18,7 @@ type DummyTodoRepo struct {
 	todoList []*model.Todo
 }
 
-func (d DummyTodoRepo) getTodoList(ctx context.Context, cursor string) ([]*model.Todo, error) {
+func (d DummyTodoRepo) GetTodoList(ctx context.Context, cursor string) ([]*model.Todo, error) {
 	resp := make([]*model.Todo, 0)
 	for _, todo := range d.todoList {
 		if cursor != "" {
@@ -42,7 +42,7 @@ func (d DummyTodoRepo) getTodoList(ctx context.Context, cursor string) ([]*model
 	return resp, nil
 }
 
-func (d DummyTodoRepo) getTodo(ctx context.Context, id string) (*model.Todo, error) {
+func (d DummyTodoRepo) GetTodo(ctx context.Context, id string) (*model.Todo, error) {
 	for _, todo := range d.todoList {
 		if todo.ID == id {
 			return todo, nil
